@@ -1,0 +1,52 @@
+isNaN() (Is Not a Number). Cette fonction renvoie true si la valeur passée en argument n'est pas un nombre, sinon elle renvoie false
+
+//register
+curl -X POST http://localhost:3000/register -H "Content-Type: application/json" -d '{
+  "email": "test@example.com",
+  "password": "password123",
+  "name": "Test",
+  "firstname": "User"
+}'
+
+//login
+curl -X POST http://localhost:3000/login -H "Content-Type: application/json" -d '{
+  "email": "nao.marvin@epitech.eu" ,
+  "password": "3 paulbec "
+}'
+
+{
+"email": "nao.marvin@epitech.eu" ,
+"name": "Marvin" ,
+"firstname": "Nao" ,
+"password": "3 paulbec "
+}
+
+//user
+curl -X GET http://localhost:3000/user -H "Authorization: Bearer your_jwt_token_here"
+curl -X GET http://localhost:3000/user -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo0Nn0sImlhdCI6MTcxNjAzMzQyNywiZXhwIjoxNzE2MDM3MDI3fQ.QLgGpzkIJ_kzIAlL2mcb2P6KQbOxLgU5tUGH9KTXGus"
+
+
+//todos
+curl -X GET http://localhost:3000/todos -H "Authorization: Bearer your_jwt_token_here"
+
+//todo/:id
+curl -X GET http://localhost:3000/todos/:id -H "Authorization: Bearer your_jwt_token_here"
+
+//create a todo
+curl -X POST http://localhost:3000/todos -H "Content-Type: application/json" -H "Authorization: Bearer your_jwt_token_here" -d '{
+  "title": "New Todo",
+  "description": "Description of new todo",
+  "due_time": "2024-05-25T12:00:00",
+  "status": "pending"
+}'
+
+//update existant todo
+curl -X PUT http://localhost:3000/todos/:id -H "Content-Type: application/json" -H "Authorization: Bearer your_jwt_token_here" -d '{
+  "title": "Updated Todo",
+  "description": "Updated description",
+  "due_time": "2024-05-25T12:00:00",
+  "status": "completed"
+}'
+
+//delete todo
+curl -X DELETE http://localhost:3000/todos/:id -H "Authorization: Bearer your_jwt_token_here"
